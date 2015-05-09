@@ -15,6 +15,11 @@ CREATE TABLE IF NOT EXISTS `cars` (
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 --
+-- Очистить таблицу перед добавлением данных `cars`
+--
+
+TRUNCATE TABLE `cars`;
+--
 -- Дамп данных таблицы `cars`
 --
 
@@ -39,6 +44,11 @@ CREATE TABLE IF NOT EXISTS `marks` (
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
+-- Очистить таблицу перед добавлением данных `marks`
+--
+
+TRUNCATE TABLE `marks`;
+--
 -- Дамп данных таблицы `marks`
 --
 
@@ -55,12 +65,45 @@ INSERT INTO `marks` (`idMark`, `Name`) VALUES
 
 DROP TABLE IF EXISTS `orders`;
 CREATE TABLE IF NOT EXISTS `orders` (
+  `idOrder` int(6) unsigned NOT NULL,
+  `idUser` int(6) unsigned DEFAULT NULL,
   `idCar` int(6) unsigned NOT NULL,
-  `UserName` varchar(50) NOT NULL,
-  `UserSurname` varchar(50) NOT NULL,
   `PayMethod` enum('credit cart','cash') NOT NULL,
   `Submitted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Очистить таблицу перед добавлением данных `orders`
+--
+
+TRUNCATE TABLE `orders`;
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE IF NOT EXISTS `users` (
+  `idUser` int(6) unsigned NOT NULL,
+  `Email` varchar(255) NOT NULL,
+  `Name` varchar(50) NOT NULL,
+  `Surname` varchar(50) NOT NULL,
+  `Password` varchar(50) NOT NULL,
+  `SessionId` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Очистить таблицу перед добавлением данных `users`
+--
+
+TRUNCATE TABLE `users`;
+--
+-- Дамп данных таблицы `users`
+--
+
+INSERT INTO `users` (`idUser`, `Email`, `Name`, `Surname`, `Password`, `SessionId`) VALUES
+(1, 'qwe', 'asd', 'zxc', '*A4B6157319038724E3560894F7F932C8886EBFCF', NULL);
 
 --
 -- Индексы сохранённых таблиц
@@ -84,7 +127,16 @@ ALTER TABLE `marks`
 -- Индексы таблицы `orders`
 --
 ALTER TABLE `orders`
-  ADD KEY `idCar` (`idCar`);
+  ADD PRIMARY KEY (`idOrder`),
+  ADD KEY `idCar` (`idCar`),
+  ADD KEY `idUser` (`idUser`);
+
+--
+-- Индексы таблицы `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`idUser`),
+  ADD UNIQUE KEY `Email` (`Email`);
 
 --
 -- AUTO_INCREMENT для сохранённых таблиц
@@ -101,6 +153,16 @@ ALTER TABLE `cars`
 ALTER TABLE `marks`
   MODIFY `idMark` int(6) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
+-- AUTO_INCREMENT для таблицы `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `idOrder` int(6) unsigned NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT для таблицы `users`
+--
+ALTER TABLE `users`
+  MODIFY `idUser` int(6) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
 -- Ограничения внешнего ключа сохраненных таблиц
 --
 
@@ -114,4 +176,5 @@ ALTER TABLE `cars`
 -- Ограничения внешнего ключа таблицы `orders`
 --
 ALTER TABLE `orders`
-  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`idCar`) REFERENCES `cars` (`idCar`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`idCar`) REFERENCES `cars` (`idCar`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`idUser`) REFERENCES `users` (`idUser`) ON DELETE SET NULL ON UPDATE CASCADE;
