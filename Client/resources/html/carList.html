@@ -1,0 +1,42 @@
+<div class="container" ng-controller="controller as ctrl">
+    <h3>Welcome to car shop</h3>
+
+    <div class="col-xs-4">
+        <form class="form-horizontal" ng-submit="ctrl.applyFilter(model, year, engine, fcolor, fspeed, price)">
+            <h4>Filters</h4>
+            <div class="form-group">
+                <label for="inputModel">Model</label>
+                <input type="text" class="form-control" id="inputModel" placeholder="Example: s600" ng-model="model">
+            </div>
+            <div class="form-group">
+                <label for="inputYear">Manufacturing year</label>
+                <input type="number" class="form-control" id="inputYear" placeholder="Example: 2014" ng-model="year">
+            </div>
+            <div class="form-group">
+                <label for="inputEngineVolume">Engine volume, L</label>
+                <input type="text" class="form-control" id="inputEngineVolume" placeholder="Example: 1.6" ng-model="engine">
+            </div>
+            <div class="form-group">
+                <label for="inputColor">Color</label>
+                <input class="form-control" type="text" id="inputColor" placeholder="Example: #0f0f0f" ng-model="fcolor"/>
+            </div>
+            <div class="form-group">
+                <label for="inputTopSpeed">Top speed, km/h</label>
+                <input type="number" class="form-control" id="inputTopSpeed" placeholder="Example: 185" ng-model="fspeed">
+            </div>
+            <div class="form-group">
+                <label for="inputPrice">Price, $</label>
+                <input type="number" class="form-control" id="inputPrice" placeholder="Example: 77000" ng-model="price">
+            </div>
+            <button type="submit" class="btn btn-primary">Apply filters</button>
+        </form>
+    </div>
+    <div class="col-xs-4">
+        <h4>Cars</h4>
+        <ol>
+            <li ng-repeat="car in ctrl.carList">
+                <a ng-href="#/car/{{car.idCar}}" ng-bind="car.Mark+' '+car.Model"></a>
+            </li>
+        </ol>
+    </div>
+</div>

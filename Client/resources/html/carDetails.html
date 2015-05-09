@@ -1,0 +1,90 @@
+<div class="container" ng-controller="controller as ctrl">
+    <ul>
+        <li>Model {{ctrl.car.Model}}</li>
+        <li>Manufacturing year {{ctrl.car.Year}}</li>
+        <li>Color
+            <div style="display: inline-block; width: 25px; height: 15px; border: 1px black solid; background-color: {{ctrl.car.Color}}"></div>
+        </li>
+        <li>Top speed {{ctrl.car.TopSpeed}} km/h</li>
+        <li>Price {{ctrl.car.Price | currency}}</li>
+    </ul>
+
+    <button class="btn btn-success" type="button" data-toggle="modal" data-target="#add">Order</button>
+
+    <!-- Order modal -->
+
+    <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="addModalLabel">Order form</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" name="orderForm" >
+                        <div class="form-group has-feedback" ng-class="(orderForm.name.$valid)? 'has-success' : 'has-error'">
+                            <label for="inputNewName" class="col-sm-2 control-label">Your name</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="name" class="form-control" id="inputNewName" placeholder="Name" aria-describedby="nameStatus" ng-model="userName" ng-pattern="ctrl.userNameSurnameTempl" ng-trim="true" required>
+                                <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true" ng-show="orderForm.name.$valid"></span>
+                                <span id="nameStatus" class="sr-only" ng-show="orderForm.name.$valid">(success)</span>
+                                <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" ng-show="orderForm.name.$invalid"></span>
+                                <span id="nameStatus" class="sr-only" ng-show="orderForm.name.$invalid">(error)</span>
+                                <span class="error" ng-show="orderForm.name.$invalid">Only letters of the Latin alphabet, spaces and dashes are allowed, at least three symbols.</span>
+                            </div>
+                        </div>
+                        <div class="form-group has-feedback" ng-class="(orderForm.surname.$valid)? 'has-success' : 'has-error'">
+                            <label for="inputNewSurname" class="col-sm-2 control-label">Surname</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="surname" class="form-control" id="inputNewSurname" placeholder="Surname" aria-describedby="surnameStatus" ng-model="userSurname" ng-pattern="ctrl.userNameSurnameTempl" ng-trim="true" required>
+                                <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true" ng-show="orderForm.surname.$valid"></span>
+                                <span id="surnameStatus" class="sr-only" ng-show="orderForm.surname.$valid">(success)</span>
+                                <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" ng-show="orderForm.surname.$invalid"></span>
+                                <span id="surnameStatus" class="sr-only" ng-show="orderForm.surname.$invalid">(error)</span>
+                                <span class="error" ng-show="orderForm.surname.$invalid">Only letters of the Latin alphabet, spaces and dashes are allowed, at least three symbols.</span>
+                            </div>
+                        </div>
+                        <label>Pay method</label>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="payMethod" ng-model="payMethod" value="credit cart" checked>
+                                Credit cart
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="payMethod" ng-model="payMethod" value="cash">
+                                Cash
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-dismiss="modal" ng-click="ctrl.addOrder(userName, userSurname, payMethod)" ng-class="{'disabled': orderForm.$invalid || undefined === payMethod}">Submit order</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notation modal -->
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <p class="modal-title lead text-center" id="myModalLabel">Order result</p>
+                </div>
+                <div class="modal-body">
+                    <p class="text-center">Your order was submitted successfully. Thanks.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

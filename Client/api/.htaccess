@@ -1,4 +1,4 @@
 RewriteEngine On
-RewriteBase /api/
-RewriteRule (.*) http://192.168.0.15/~user10/REST/task1/Server/api/$1 [P]
-#RewriteRule (.*) http://localhost/REST/task1/Server/api/$1 [P]
+#RewriteBase /api/
+#RewriteRule (.*) http://192.168.0.15/~user10/REST/task1/Server/api/$1 [P]
+RewriteRule (.*) http://localhost/REST/task1/Server/api/$1 [P]
