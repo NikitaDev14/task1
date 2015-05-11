@@ -2,26 +2,20 @@
 <div class="container" ng-controller="userController as userCtrl">
     <form class="form-horizontal" name="signupForm" ng-submit="userCtrl.login()">
         <div class="form-group has-feedback">
-            <label for="inputEmail" class="col-sm-2 control-label">{{userCtrl.lang.template.login.email}}</label>
-
-            <div class="col-sm-10">
+            <div class="col-xs-offset-4 col-xs-4">
                 <input type="text" name="email" class="form-control" id="inputEmail"
-                       placeholder="{{userCtrl.lang.template.login.email}}" ng-model="email">
+                       placeholder="Email" ng-model="email">
             </div>
         </div>
         <div class="form-group has-feedback">
-            <label for="inputPassword" class="col-sm-2 control-label">{{userCtrl.lang.template.login.pass}}</label>
-
-            <div class="col-sm-10">
+            <div class="col-xs-offset-4 col-xs-4">
                 <input type="password" name="password" class="form-control" id="inputPassword"
-                       placeholder="{{userCtrl.lang.template.login.pass}}" ng-model="password">
+                       placeholder="Password" ng-model="password">
             </div>
         </div>
         <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-primary" data-toggle="modal">
-                    {{userCtrl.lang.template.login.login}}
-                </button>
+            <div class="col-xs-offset-4 col-xs-4">
+                <button type="submit" class="btn btn-primary" data-toggle="modal">Login</button>
             </div>
         </div>
     </form>

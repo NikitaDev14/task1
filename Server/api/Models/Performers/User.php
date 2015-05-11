@@ -26,7 +26,7 @@
 		 */
 		public function getUserByEml($email)
 		{
-			return (bool)$this->objFactory->getObjDatabase()
+			return (bool) $this->objFactory->getObjDatabase()
 				->setQuery('CALL rest_getEmplByEml(:email)')
 				->execute([':email' => $email])->getResult();
 		}
@@ -40,7 +40,7 @@
 			return $this->objFactory->getObjDatabase()
 				->setQuery('CALL rest_getEmplByEmlPass(:email, :password)')
 				->execute([':email' => $email, ':password' => $password])
-				->getResult();
+				->getResult()[0]['idUser'];
 		}
 
 		/**

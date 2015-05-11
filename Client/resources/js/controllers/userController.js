@@ -25,7 +25,6 @@ carShop.controller('userController',
             }
         });
 
-        /*
         this.login = function () {
             userService.login($scope.email,
                 $scope.password, function (response) {
@@ -64,5 +63,4 @@ carShop.controller('userController',
                     alert(mess);
                 });
         };
-        */
     });

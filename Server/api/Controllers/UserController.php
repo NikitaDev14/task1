@@ -17,7 +17,7 @@
 				$result = $this->user;
 			}
 
-
+			$this->view->response($result);
 
 			//var_dump($result);
 		}
@@ -29,35 +29,29 @@
 		 */
 		public function putSession()
 		{
-			$formData = $this->objFactory->getObjHttp()
-				->setParams($this->form)->getParams();
-
-			$user = $this->objFactory->getObjValidatorLogin()
-				->setForm($formData)->isValidForm();
+			$user = $this->objFactory->getObjLoginValidator()
+				->setForm($this->params)->isValidForm();
 
 			$result = false;
 
+			var_dump($this->params);
+
 			if (true === (bool) $user)
 			{
-				$userId = $user[0]['idEmployee'];
-
 				$sessionId = $this->objFactory->getObjSession()
 					->getSessionId();
 
 				$this->objFactory->getObjUser()
-					->sessionStart($userId, $sessionId);
+					->sessionStart($user, $sessionId);
 
 				$this->objFactory->getObjCookie()
-					->setCookie('id', $userId)
-					->setCookie('isAdmin', $user[0]['IsAdmin'])
+					->setCookie('id', $user)
 					->setCookie('session', $sessionId);
 
-				$result = $userId;
+				$result = $user;
 			}
 
-			$this->objFactory->getObjDataContainer()
-				->setParams(['nextPage' => $this->nextPage,
-					'result' => $result]);
+			//$this->view->response($result);
 		}
 
 		/**

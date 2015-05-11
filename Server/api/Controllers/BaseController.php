@@ -19,7 +19,7 @@
 			$this->user = $this->objFactory
 				->getObjUserValidator()->isValidUser();
 
-			$viewName = ucfirst($this->responseFormat) . 'View';
+			$viewName = '\Views\\' . ucfirst($this->responseFormat) . 'View';
 
 			$this->view = new $viewName();
 		}

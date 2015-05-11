@@ -1,3 +1,5 @@
+var BASE_REQUEST_URI = '/REST/task1/Client/api/';
+
 carShop.config(function ($stateProvider, $urlRouterProvider) {
 
     $urlRouterProvider.otherwise('/');
@@ -9,14 +11,14 @@ carShop.config(function ($stateProvider, $urlRouterProvider) {
         })
         .state('carDetails', {
             url: '/car/:idCar',
-            templateUrl: 'resources/html/carDetails.html'
+            templateUrl: 'html/carDetails.html'
         })
         .state('login', {
-            url: '/car/:idCar',
-            templateUrl: 'resources/html/login.html'
+            url: '/login',
+            templateUrl: 'html/login.html'
         })
         .state('signin', {
             url: '/signin',
-            templateUrl: 'resources/html/carDetails.html'
+            templateUrl: 'html/carDetails.html'
         })
 });

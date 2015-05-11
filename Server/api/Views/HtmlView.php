@@ -4,10 +4,15 @@
 
 	class HtmlView extends BaseView
 	{
-		public function render()
+		public function response($responseContent)
 		{
 			header(HEADER_HTML);
 
+
+		}
+
+		public function responseError()
+		{
 
 		}
 	}

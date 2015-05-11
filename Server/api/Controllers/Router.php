@@ -15,6 +15,8 @@
 
 		private function __construct()
 		{
+			$method = $_SERVER['REQUEST_METHOD'];
+
 			$this->requestString = explode('/',
 				$_SERVER['REQUEST_URI'], CLASSNAME_POS_IN_REQUEST+3);
 
@@ -22,7 +24,7 @@
 				ucfirst($this->requestString[CLASSNAME_POS_IN_REQUEST]) .
 				'Controller';
 
-			$this->action = strtolower($_SERVER['REQUEST_METHOD']) .
+			$this->action = strtolower($method) .
 				ucfirst(explode('.',
 					$this->requestString[CLASSNAME_POS_IN_REQUEST+1])[0]);
 
@@ -38,6 +40,14 @@
 			}
 
 			$this->args = explode('/', $responseFormat[0]);
+
+			switch($method)
+			{
+				case 'PUT':
+				{
+					parse_str(file_get_contents('php://input'), $this->args);
+				}
+			}
 		}
 
 		public static function getInstance()
@@ -55,21 +65,21 @@
 		 */
 		public function start()
 		{
-			/*
 			echo '<pre>';
 
-			var_dump($this->controller, $this->action,
+			var_dump($this->controller,	$this->action,
 				$this->args, $this->responseFormat,
 				$this->requestString);
 
 			echo '</pre>';
-			*/
 
+			/*
 			$objController = new $this->controller(
 				$this->args, $this->responseFormat);
 
 			$action = $this->action;
 
 			$objController->$action();
+			*/
 		}
 	}
