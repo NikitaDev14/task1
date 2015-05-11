@@ -11,6 +11,7 @@
 		private $action;
 		private $args;
 		private $responseFormat;
+		private $isError;
 
 		private function __construct()
 		{
@@ -31,12 +32,17 @@
 			$this->responseFormat = (empty($responseFormat[1]))?
 				DEFAULT_RESPONSE_FORMAT : $responseFormat[1];
 
+			if(!in_array($this->responseFormat, AVAILABLE_TYPES, true))
+			{
+				$this->isError = true;
+			}
+
 			$this->args = explode('/', $responseFormat[0]);
 		}
 
 		public static function getInstance()
 		{
-			if (empty(self::$instance))
+			if(empty(self::$instance))
 			{
 				self::$instance = new Router();
 			}
@@ -49,6 +55,7 @@
 		 */
 		public function start()
 		{
+			/*
 			echo '<pre>';
 
 			var_dump($this->controller, $this->action,
@@ -56,6 +63,7 @@
 				$this->requestString);
 
 			echo '</pre>';
+			*/
 
 			$objController = new $this->controller(
 				$this->args, $this->responseFormat);

@@ -2,7 +2,7 @@ carShop.controller('carController',
     function ($scope, requestService, $stateParams) {
 
     var self = this;
-
+    /*
     if(undefined !== $stateParams.idCar) {
         requestService.getCarDetails($stateParams.idCar, function (response) {
             self.car = response;
@@ -35,4 +35,5 @@ carShop.controller('carController',
             self.carList = response;
         });
     };
+    */
 });

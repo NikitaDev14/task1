@@ -1,27 +1,13 @@
-<nav class="navbar navbar-default navbar-static-top">
-    <div class="container-fluid">
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
         <div class="row" ng-controller="userController as userCtrl">
-            <div class="col-xs-3">
-                <a class="btn btn-primary" ng-href="#/" role="button" ng-show="userCtrl.isValidUser" ng-bind="userCtrl.lang.template.header.mainPage"></a>
-                <a class="btn btn-success" ng-href="#/book" role="button" ng-show="userCtrl.isValidUser" ng-bind="userCtrl.lang.template.header.bookIt"></a>
-                <a class="btn btn-warning" ng-href="#/employee-list" role="button" ng-show="userCtrl.isValidUser && userCtrl.isValidAdmin" ng-bind="userCtrl.lang.template.header.emplLst"></a>
+            <div class="col-xs-6">
+                <a class="btn btn-primary" ng-href="#/" role="button" ng-show="userCtrl.isValidUser">Main</a>
+                <a class="btn btn-success" ng-href="#/book" role="button" ng-hide="userCtrl.isValidUser">Sign in</a>
             </div>
-            <div class="col-xs-4 text-center">
-                <button class="btn btn-info" type="button" ng-repeat="room in userCtrl.rooms" ng-click="userCtrl.calendar.setRoom(room.idRoom)"
-                        ng-class="{'active': userCtrl.room.get() === room.idRoom}" ng-bind="room.Name"></button>
-            </div>
-            <div class="col-xs-3 text-center">
-                <span>Boardroom booker</span>
-                <button class="btn btn-default" type="button" ng-click="userCtrl.lang.changeLang('ua')" ng-class="{'active': userCtrl.lang.get() === 'ua'}">
-                    <img class="lang-button" src="Resources/img/ua_icon.jpg">
-                </button>
-                <button class="btn btn-default" type="button" ng-click="userCtrl.lang.changeLang('en')" ng-class="{'active': userCtrl.lang.get() === 'en'}">
-                    <img class="lang-button" src="Resources/img/usa_icon.png">
-                </button>
-            </div>
-            <div class="col-xs-2 text-right">
-                <mark ng-bind="userCtrl.user.name"></mark>
-                <button class="btn btn-default" type="button" ng-show="userCtrl.isValidUser" ng-click="userCtrl.logout()" ng-bind="userCtrl.lang.template.header.logout"></button>
+            <div class="col-xs-6 text-right">
+                <mark ng-show="userCtrl.isValidUser" ng-bind="userCtrl.user.name"></mark>
+                <button class="btn btn-default" type="button" ng-show="userCtrl.isValidUser" ng-click="userCtrl.logout()">Logout</button>
             </div>
         </div>
     </div>

@@ -1,5 +1,7 @@
 <?php
-	define('DEFAULT_RESPONSE_FORMAT', 'json'); // available: json, xml, html, txt
+	define('DEFAULT_RESPONSE_FORMAT', 'html');
+
+	const AVAILABLE_TYPES = ['html', 'xml', 'txt', 'json'];
 
 	/*                                 //for GFL server
 	define('DB_HOST', 'localhost');
@@ -21,4 +23,6 @@
 	define('COOKIE_EXPIRE', 60 * 15);
 
 	define('HEADER_HTML', 'Content-Type: text/html; charset=utf-8');
+	define('HEADER_XML', 'Content-Type: text/xml; charset=utf-8');
+	define('HEADER_TXT', 'Content-Type: text/plain; charset=utf-8');
 	define('HEADER_JSON', 'Content-Type: application/json; charset=utf-8');

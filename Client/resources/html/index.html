@@ -2,20 +2,24 @@
 <html ng-app="carShop">
 <head lang="en">
     <meta charset="UTF-8">
-    <title>Task2</title>
+    <title>REEEST</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
     <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.0-rc.1/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.14/angular-ui-router.min.js"></script>
+
     <base href="/REST/task1/Client/resources/">
+    <link rel="stylesheet" href="css/style.css">
     <script src="js/carShop.js"></script>
-    <script src="js/requestService.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/services/carService.js"></script>
+    <script src="js/services/userService.js"></script>
+    <script src="js/factories/userFactory.js"></script>
     <script src="js/controllers/carController.js"></script>
     <script src="js/controllers/userController.js"></script>
-    <script src="js/header.js"></script>
-    <script src="js/config.js"></script>
+    <script src="js/directives/header.js"></script>
 </head>
 <body>
     <div class="container" ui-view></div>

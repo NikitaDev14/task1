@@ -5,27 +5,18 @@ carShop.config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
         .state('carList', {
             url: '/',
-            templateUrl: 'html/carList.html',
-            controller: 'controller'
+            templateUrl: 'html/carList.html'
         })
         .state('carDetails', {
             url: '/car/:idCar',
-            templateUrl: 'resources/html/carDetails.html',
-            controller: 'controller'
+            templateUrl: 'resources/html/carDetails.html'
         })
         .state('login', {
             url: '/car/:idCar',
-            templateUrl: 'resources/html/carDetails.html',
-            controller: 'controller'
-        })
-        .state('logout', {
-            url: '/login',
-            templateUrl: 'resources/html/carDetails.html',
-            controller: 'controller'
+            templateUrl: 'resources/html/login.html'
         })
         .state('signin', {
             url: '/signin',
-            templateUrl: 'resources/html/carDetails.html',
-            controller: 'controller'
+            templateUrl: 'resources/html/carDetails.html'
         })
 });

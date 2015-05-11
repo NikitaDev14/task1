@@ -17,7 +17,9 @@
 				$result = $this->user;
 			}
 
-			var_dump($result);
+
+
+			//var_dump($result);
 		}
 
 		/**

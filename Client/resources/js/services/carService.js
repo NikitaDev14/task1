@@ -1,4 +1,5 @@
 carShop.service('requestService', function ($http) {
+    /*
     this.getCarList = function (callback) {
         $http.get('index.php?action=getCarList')
             .success(callback);
@@ -28,4 +29,5 @@ carShop.service('requestService', function ($http) {
             '&price='+price)
                 .success(callback);
     };
+    */
 });
