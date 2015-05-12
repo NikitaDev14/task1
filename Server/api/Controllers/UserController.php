@@ -12,14 +12,14 @@
 		{
 			$result = false;
 
-			var_dump($_COOKIE);
+			//var_dump($_COOKIE);
 
 			if(true === (bool) $this->user)
 			{
 				$result = $this->user;
 			}
 
-			//$this->view->response($result);
+			$this->view->response($result);
 		}
 
 		/**

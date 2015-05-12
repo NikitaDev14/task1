@@ -8,7 +8,7 @@
 		{
 			$result = false;
 
-			var_dump($_COOKIE);
+			//var_dump($_COOKIE);
 
 			if(true === (bool) $this->user)
 			{
