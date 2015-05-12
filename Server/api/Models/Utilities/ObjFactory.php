@@ -60,6 +60,11 @@
 			return new \Models\Interfaces\Cookie(COOKIE_EXPIRE);
 		}
 
+		public function getObjCar()
+		{
+			return new \Models\Performers\Car();
+		}
+
 		public function getObjUser()
 		{
 			return new \Models\Performers\User();

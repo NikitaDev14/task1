@@ -24,7 +24,7 @@
 		 * @return if $email is set true
 		 * false otherwise
 		 */
-		public function getUserByEml($email)
+		public function getUserByEmail($email)
 		{
 			return (bool) $this->objFactory->getObjDatabase()
 				->setQuery('CALL rest_getEmplByEml(:email)')
@@ -35,12 +35,12 @@
 		 * check existing pair $email and $password
 		 * @return (idUser)
 		 */
-		public function getUserByEmlPass($email, $password)
+		public function getUserByEmailPassw($email, $password)
 		{
 			return $this->objFactory->getObjDatabase()
-				->setQuery('CALL rest_getEmplByEmlPass(:email, :password)')
+				->setQuery('CALL rest_getUserByEmailPassw(:email, :password)')
 				->execute([':email' => $email, ':password' => $password])
-				->getResult()[0]['idUser'];
+				->getResult();
 		}
 
 		/**
@@ -50,7 +50,7 @@
 		public function getUserBySession($idUser, $sessionId)
 		{
 			return $this->objFactory->getObjDatabase()
-				->setQuery('CALL rest_getEmplByCookie(:idUser, :sessionId)')
+				->setQuery('CALL rest_getUserBySession(:idUser, :sessionId)')
 				->execute([':idUser' => $idUser, ':sessionId' => $sessionId])
 				->getResult();
 		}

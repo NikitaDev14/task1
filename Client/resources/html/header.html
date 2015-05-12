@@ -9,7 +9,7 @@
                 <p class="lead">Car shop</p>
             </div>
             <div class="col-xs-4 text-right">
-                <mark ng-show="userCtrl.isValidUser" ng-bind="userCtrl.user.name"></mark>
+                <mark ng-show="userCtrl.isValidUser" ng-bind="userCtrl.user.name + ' ' + userCtrl.user.surname"></mark>
                 <button class="btn btn-default" type="button" ng-show="userCtrl.isValidUser" ng-click="userCtrl.logout()">Logout</button>
             </div>
         </div>

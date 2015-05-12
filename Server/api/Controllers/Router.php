@@ -65,6 +65,7 @@
 		 */
 		public function start()
 		{
+			/*
 			echo '<pre>';
 
 			var_dump($this->controller,	$this->action,
@@ -72,14 +73,15 @@
 				$this->requestString);
 
 			echo '</pre>';
+			*/
 
-			/*
+
 			$objController = new $this->controller(
 				$this->args, $this->responseFormat);
 
 			$action = $this->action;
 
 			$objController->$action();
-			*/
+
 		}
 	}

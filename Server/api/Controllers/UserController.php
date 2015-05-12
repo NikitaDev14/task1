@@ -6,20 +6,20 @@
 	{
 		/**
 		 * if user is logged
-		 * set response (idUser, Name, Email), false otherwise
+		 * set response (idUser, Name, Surname), false otherwise
 		 */
 		public function getInfo()
 		{
 			$result = false;
+
+			var_dump($_COOKIE);
 
 			if(true === (bool) $this->user)
 			{
 				$result = $this->user;
 			}
 
-			$this->view->response($result);
-
-			//var_dump($result);
+			//$this->view->response($result);
 		}
 
 		/**
@@ -34,24 +34,28 @@
 
 			$result = false;
 
-			var_dump($this->params);
+			//var_dump($user);
 
 			if (true === (bool) $user)
 			{
+				$userId = $user[0]['idUser'];
+
 				$sessionId = $this->objFactory->getObjSession()
 					->getSessionId();
 
 				$this->objFactory->getObjUser()
-					->sessionStart($user, $sessionId);
+					->sessionStart($userId, $sessionId);
 
 				$this->objFactory->getObjCookie()
-					->setCookie('id', $user)
+					->setCookie('id', $userId)
 					->setCookie('session', $sessionId);
 
-				$result = $user;
+				//echo $this->objFactory->getObjCookie()->getCookie('id');
+
+				$result = true;
 			}
 
-			//$this->view->response($result);
+			$this->view->response($result);
 		}
 
 		/**

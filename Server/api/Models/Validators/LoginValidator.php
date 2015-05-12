@@ -33,7 +33,7 @@
 			if (isset($this->form['email'], $this->form['password']))
 			{
 				$result = $this->objFactory->getObjUser()
-					->getUserByEmlPass
+					->getUserByEmailPassw
 					(
 						$this->form['email'],
 						$this->form['password']

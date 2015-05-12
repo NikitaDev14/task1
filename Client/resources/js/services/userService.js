@@ -1,4 +1,5 @@
 carShop.service('userService', function ($http) {
+
     this.isValidUser = function (callback) {
         $http.get(BASE_REQUEST_URI + 'user/info.json')
             .success(callback);

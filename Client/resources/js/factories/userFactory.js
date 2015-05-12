@@ -6,8 +6,8 @@ carShop.factory('userFactory', function () {
     this.user.save = function (newUser) {
 
         this.id = newUser.idUser;
-        this.name = newUser.name;
-        this.email = newUser.email;
+        this.name = newUser.Name;
+        this.surname = newUser.Surname;
     };
 
     this.user.remove = function () {

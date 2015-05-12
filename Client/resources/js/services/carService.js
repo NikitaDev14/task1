@@ -1,14 +1,16 @@
-carShop.service('requestService', function ($http) {
-    /*
+carShop.service('carService', function ($http) {
+
     this.getCarList = function (callback) {
-        $http.get('index.php?action=getCarList')
+        $http.get(BASE_REQUEST_URI + 'car/carList.json')
             .success(callback);
     };
+
     this.getCarDetails = function (idCar, callback) {
         $http.get('index.php?action=getCarDetails'+
             '&car='+idCar)
             .success(callback);
     };
+    /*
     this.addOrder = function (idCar, userName, userSurname, payMethod, callback) {
         $http.get('index.php?' +
             'action=addOrder' +

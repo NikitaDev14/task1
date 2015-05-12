@@ -21,7 +21,7 @@ carShop.controller('userController',
                 $location.path('/login');
             }
             else {
-                self.user.save(response);
+                self.user.save(response[0]);
             }
         });
 
@@ -29,7 +29,7 @@ carShop.controller('userController',
             userService.login($scope.email,
                 $scope.password, function (response) {
 
-                    if ('' === response) {
+                    if (false === response) {
                         self.response = 'Incorrect data';
                     }
                     else {
