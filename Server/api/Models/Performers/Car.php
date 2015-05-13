@@ -14,7 +14,7 @@
 		public function getCarDetails($idCar)
 		{
 			return $this->objFactory->getObjDatabase()
-				->setQuery('CALL getCarDetails(:idCar)')
+				->setQuery('CALL rest_getCarDetails(:idCar)')
 				->execute([':idCar' => $idCar])->getResult()[0];
 		}
 
@@ -30,17 +30,17 @@
 					':payMethod' => $params[3]])->getResult()[0]['result'];
 		}
 
-		public function getCarListByFilter($params)
+		public function getCarListByFilter($filter)
 		{
 			return $this->objFactory->getObjDatabase()
-				->setQuery('CALL getCarByParams(:model, :year, :engine,
+				->setQuery('CALL rest_getCarByFilter(:model, :year, :engine,
 				        :color, :speed, :price)')
 				->execute([
-					':model' => $params[0],
-					':year' => $params[1],
-					':engine' => $params[2],
-					':color' => $params[3],
-					':speed' => $params[4],
-					':price' => $params[5]])->getResult();
+					':model' => substr($filter[0], 2),
+					':year' => substr($filter[1], 2),
+					':engine' => substr($filter[2], 2),
+					':color' => substr($filter[3], 2),
+					':speed' => substr($filter[4], 2),
+					':price' => substr($filter[5], 2)])->getResult();
 		}
 	}

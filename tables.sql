@@ -1,5 +1,5 @@
 --
--- Структура таблицы `cars`
+-- Структура таблицы `rest_cars`
 --
 
 DROP TABLE IF EXISTS `rest_cars`;
@@ -15,12 +15,12 @@ CREATE TABLE IF NOT EXISTS `rest_cars` (
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 --
--- Очистить таблицу перед добавлением данных `cars`
+-- Очистить таблицу перед добавлением данных `rest_cars`
 --
 
 TRUNCATE TABLE `rest_cars`;
 --
--- Дамп данных таблицы `cars`
+-- Дамп данных таблицы `rest_cars`
 --
 
 INSERT INTO `rest_cars` (`idCar`, `idMark`, `Model`, `Year`, `EngineVolume`, `Color`, `TopSpeed`, `Price`) VALUES
@@ -34,7 +34,7 @@ INSERT INTO `rest_cars` (`idCar`, `idMark`, `Model`, `Year`, `EngineVolume`, `Co
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `marks`
+-- Структура таблицы `rest_marks`
 --
 
 DROP TABLE IF EXISTS `rest_marks`;
@@ -44,12 +44,12 @@ CREATE TABLE IF NOT EXISTS `rest_marks` (
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
--- Очистить таблицу перед добавлением данных `marks`
+-- Очистить таблицу перед добавлением данных `rest_marks`
 --
 
 TRUNCATE TABLE `rest_marks`;
 --
--- Дамп данных таблицы `marks`
+-- Дамп данных таблицы `rest_marks`
 --
 
 INSERT INTO `rest_marks` (`idMark`, `Name`) VALUES
@@ -60,7 +60,7 @@ INSERT INTO `rest_marks` (`idMark`, `Name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `orders`
+-- Структура таблицы `rest_orders`
 --
 
 DROP TABLE IF EXISTS `rest_orders`;
@@ -73,14 +73,14 @@ CREATE TABLE IF NOT EXISTS `rest_orders` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Очистить таблицу перед добавлением данных `orders`
+-- Очистить таблицу перед добавлением данных `rest_orders`
 --
 
 TRUNCATE TABLE `rest_orders`;
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `users`
+-- Структура таблицы `rest_users`
 --
 
 DROP TABLE IF EXISTS `rest_users`;
@@ -94,37 +94,37 @@ CREATE TABLE IF NOT EXISTS `rest_users` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
--- Очистить таблицу перед добавлением данных `users`
+-- Очистить таблицу перед добавлением данных `rest_users`
 --
 
 TRUNCATE TABLE `rest_users`;
 --
--- Дамп данных таблицы `users`
+-- Дамп данных таблицы `rest_users`
 --
 
 INSERT INTO `rest_users` (`idUser`, `Email`, `Name`, `Surname`, `Password`, `SessionId`) VALUES
-(1, 'qwe', 'asd', 'zxc', '*A4B6157319038724E3560894F7F932C8886EBFCF', NULL);
+(1, 'qwe', 'asd', 'zxc', '*A4B6157319038724E3560894F7F932C8886EBFCF', 'vm0koen357bheg6ihf88vq2qf5');
 
 --
 -- Индексы сохранённых таблиц
 --
 
 --
--- Индексы таблицы `cars`
+-- Индексы таблицы `rest_cars`
 --
 ALTER TABLE `rest_cars`
   ADD PRIMARY KEY (`idCar`),
   ADD KEY `idMark` (`idMark`);
 
 --
--- Индексы таблицы `marks`
+-- Индексы таблицы `rest_marks`
 --
 ALTER TABLE `rest_marks`
   ADD PRIMARY KEY (`idMark`),
   ADD UNIQUE KEY `Name` (`Name`);
 
 --
--- Индексы таблицы `orders`
+-- Индексы таблицы `rest_orders`
 --
 ALTER TABLE `rest_orders`
   ADD PRIMARY KEY (`idOrder`),
@@ -132,7 +132,7 @@ ALTER TABLE `rest_orders`
   ADD KEY `idUser` (`idUser`);
 
 --
--- Индексы таблицы `users`
+-- Индексы таблицы `rest_users`
 --
 ALTER TABLE `rest_users`
   ADD PRIMARY KEY (`idUser`),
@@ -143,22 +143,22 @@ ALTER TABLE `rest_users`
 --
 
 --
--- AUTO_INCREMENT для таблицы `cars`
+-- AUTO_INCREMENT для таблицы `rest_cars`
 --
 ALTER TABLE `rest_cars`
   MODIFY `idCar` int(6) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
--- AUTO_INCREMENT для таблицы `marks`
+-- AUTO_INCREMENT для таблицы `rest_marks`
 --
 ALTER TABLE `rest_marks`
   MODIFY `idMark` int(6) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
--- AUTO_INCREMENT для таблицы `orders`
+-- AUTO_INCREMENT для таблицы `rest_orders`
 --
 ALTER TABLE `rest_orders`
   MODIFY `idOrder` int(6) unsigned NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT для таблицы `users`
+-- AUTO_INCREMENT для таблицы `rest_users`
 --
 ALTER TABLE `rest_users`
   MODIFY `idUser` int(6) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
@@ -167,14 +167,14 @@ ALTER TABLE `rest_users`
 --
 
 --
--- Ограничения внешнего ключа таблицы `cars`
+-- Ограничения внешнего ключа таблицы `rest_cars`
 --
 ALTER TABLE `rest_cars`
-  ADD CONSTRAINT `cars_ibfk_5` FOREIGN KEY (`idMark`) REFERENCES `rest_marks` (`idMark`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `rest_cars_ibfk_1` FOREIGN KEY (`idMark`) REFERENCES `rest_marks` (`idMark`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ограничения внешнего ключа таблицы `orders`
+-- Ограничения внешнего ключа таблицы `rest_orders`
 --
 ALTER TABLE `rest_orders`
-  ADD CONSTRAINT `orders_ibfk_5` FOREIGN KEY (`idCar`) REFERENCES `rest_cars` (`idCar`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `orders_ibfk_6` FOREIGN KEY (`idUser`) REFERENCES `rest_users` (`idUser`) ON DELETE SET NULL ON UPDATE CASCADE;
+  ADD CONSTRAINT `rest_orders_ibfk_1` FOREIGN KEY (`idCar`) REFERENCES `rest_cars` (`idCar`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `rest_orders_ibfk_2` FOREIGN KEY (`idUser`) REFERENCES `rest_users` (`idUser`) ON DELETE SET NULL ON UPDATE CASCADE;

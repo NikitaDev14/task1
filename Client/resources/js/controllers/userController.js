@@ -17,8 +17,6 @@ carShop.controller('userController',
             if(false === self.isValidUser) {
 
                 self.user.remove();
-
-                $location.path('/login');
             }
             else {
                 self.user.save(response[0]);
@@ -40,7 +38,7 @@ carShop.controller('userController',
 
         this.logout = function () {
             userService.logout(function () {
-                $location.path('/login');
+                $location.path('/');
             });
         };
 

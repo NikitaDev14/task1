@@ -13,7 +13,7 @@
 
 		public function setCookie($name, $value)
 		{
-			setcookie($name, $value, time() + $this->expire);
+			setrawcookie($name, $value, time() + $this->expire, '/', 'localhost');
 
 			return $this;
 		}
@@ -34,7 +34,7 @@
 
 		public function deleteCookie($name)
 		{
-			setcookie($name, '', time() - $this->expire);
+			//setcookie($name, '', time() - $this->expire);
 
 			return $this;
 		}

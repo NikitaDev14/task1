@@ -1,12 +1,13 @@
-<div class="container" ng-controller="controller as ctrl">
+<div header></div>
+<div class="container" ng-controller="carController as carCtrl">
     <ul>
-        <li>Model {{ctrl.car.Model}}</li>
-        <li>Manufacturing year {{ctrl.car.Year}}</li>
-        <li>Color
-            <div style="display: inline-block; width: 25px; height: 15px; border: 1px black solid; background-color: {{ctrl.car.Color}}"></div>
+        <li>Model: {{carCtrl.car.Model}}</li>
+        <li>Manufacturing year: {{carCtrl.car.Year}}</li>
+        <li>Color:
+            <div style="display: inline-block; width: 25px; height: 15px; border: 1px black solid; background-color: {{carCtrl.car.Color}}"></div>
         </li>
-        <li>Top speed {{ctrl.car.TopSpeed}} km/h</li>
-        <li>Price {{ctrl.car.Price | currency}}</li>
+        <li>Top speed: {{carCtrl.car.TopSpeed}} km/h</li>
+        <li>Price: {{carCtrl.car.Price | currency}}</li>
     </ul>
 
     <button class="btn btn-success" type="button" data-toggle="modal" data-target="#add">Order</button>

@@ -13,7 +13,6 @@ carShop.controller('carController',
             self.carList = response;
         });
     }
-    /*
     this.addOrder = function (userName, userSurname, payMethod) {
         requestService.addOrder($stateParams.idCar,
             userName, userSurname, payMethod, function(response){
@@ -23,7 +22,7 @@ carShop.controller('carController',
             });
     };
     this.applyFilter = function (model, year, engine, color, speed, price) {
-        requestService.getCarListByFilter(
+        carService.getCarListByFilter(
             model || '',
             year || '',
             engine || '',
@@ -35,5 +34,4 @@ carShop.controller('carController',
             self.carList = response;
         });
     };
-    */
 });

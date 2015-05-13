@@ -3,7 +3,7 @@
     <h3>Welcome to car shop</h3>
 
     <div class="col-xs-4">
-        <form class="form-horizontal" ng-submit="ctrl.applyFilter(model, year, engine, fcolor, fspeed, price)">
+        <form class="form-horizontal" ng-submit="carCtrl.applyFilter(model, year, engine, fcolor, fspeed, price)">
             <h4>Filters</h4>
             <div class="form-group">
                 <label for="inputModel">Model</label>
@@ -35,8 +35,8 @@
     <div class="col-xs-4">
         <h4>Cars</h4>
         <ol>
-            <li ng-repeat="car in ctrl.carList">
-                <a ng-href="#/car/{{car.idCar}}" ng-bind="car.Mark+' '+car.Model"></a>
+            <li ng-repeat="car in carCtrl.carList">
+                <a ng-href="html/#/car/{{car.idCar}}" ng-bind="car.Mark+' '+car.Model"></a>
             </li>
         </ol>
     </div>
