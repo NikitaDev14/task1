@@ -15,8 +15,8 @@
 		{
 			$result = $this->objFactory->getObjCar()
 				->getCarListByFilter($this->params);
-
-			$this->view->response($result);
+            var_dump($this->params);
+			//$this->view->response($result);
 		}
 
 		public function getCarDetails()
