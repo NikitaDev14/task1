@@ -47,12 +47,11 @@
 		 * check session of specified user
 		 * @return (idUser, Name, Surname)
 		 */
-		public function getUserBySession($idUser, $sessionId)
+		public function getUserBySession($sessionId)
 		{
 			return $this->objFactory->getObjDatabase()
-				->setQuery('CALL rest_getUserBySession(:idUser, :sessionId)')
-				->execute([':idUser' => $idUser, ':sessionId' => $sessionId])
-				->getResult();
+				->setQuery('CALL rest_getUserBySession(:sessionId)')
+				->execute([':sessionId' => $sessionId])->getResult();
 		}
 
 		/**

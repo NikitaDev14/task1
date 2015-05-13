@@ -16,13 +16,11 @@
 
 			$cookie = $this->objFactory->getObjCookie();
 
-			$this->idUser = $cookie->getCookie('id');
-			$this->sessionId = $cookie->getCookie('session');
+			$this->sessionId = $cookie->getCookie('PHPSESSID');
 
 			$this->user = $this->objFactory->getObjUser()
 				->getUserBySession
 				(
-					$this->idUser,
 					$this->sessionId
 				);
 		}

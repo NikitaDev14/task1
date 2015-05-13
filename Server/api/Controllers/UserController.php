@@ -34,8 +34,6 @@
 
 			$result = false;
 
-			//var_dump($user);
-
 			if (true === (bool) $user)
 			{
 				$userId = $user[0]['idUser'];
@@ -45,12 +43,6 @@
 
 				$this->objFactory->getObjUser()
 					->sessionStart($userId, $sessionId);
-
-				$this->objFactory->getObjCookie()
-					->setCookie('id', $userId)
-					->setCookie('session', $sessionId);
-
-				//echo $this->objFactory->getObjCookie()->getCookie('id');
 
 				$result = true;
 			}

@@ -79,13 +79,12 @@ BEGIN
 END$$
 
 DROP PROCEDURE IF EXISTS `rest_getUserBySession`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `rest_getUserBySession`(IN `idUser` INT(6) UNSIGNED, IN `SessionId` VARCHAR(50) CHARSET utf8)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `rest_getUserBySession`(IN `SessionId` VARCHAR(50) CHARSET utf8)
     READS SQL DATA
 BEGIN
 	SELECT users.idUser, users.Name, users.Surname
     FROM rest_users AS users
-    WHERE users.idUser = idUser AND
-    	users.SessionId = SessionId;
+    WHERE users.SessionId = SessionId;
 END$$
 
 DROP PROCEDURE IF EXISTS `rest_sessionDestroy`$$
