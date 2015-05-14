@@ -29,12 +29,13 @@
 					$this->requestString[CLASSNAME_POS_IN_REQUEST+1])[0]);
 
 			$responseFormat = explode('.',
-				$this->requestString[count($this->requestString)]);
+				$this->requestString[count($this->requestString)-1]);
 
 			$this->responseFormat = (empty($responseFormat[1]))?
 				DEFAULT_RESPONSE_FORMAT : $responseFormat[1];
 
-			if(!in_array($this->responseFormat, unserialize(AVAILABLE_TYPES), true))
+			if(!in_array($this->responseFormat,
+				unserialize(AVAILABLE_TYPES), true))
 			{
 				$this->isError = true;
 			}
@@ -70,10 +71,10 @@
 
 			var_dump($this->controller,	$this->action,
 				$this->args, $this->responseFormat,
-				$this->requestString);
+				$this->requestString, apache_request_headers());
 
 			echo '</pre>';
-             */
+			*/
 
 
 			$objController = new $this->controller(

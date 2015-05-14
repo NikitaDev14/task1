@@ -6,33 +6,25 @@
 	{
 		/**
 		 * if user is logged
-		 * set response (idUser, Name, Surname), false otherwise
+		 * set response (idUser, Name, Surname, SessionId), false otherwise
 		 */
 		public function getInfo()
 		{
-			$result = false;
-
-			//var_dump($_COOKIE);
-
 			if(true === (bool) $this->user)
 			{
-				$result = $this->user;
+				$this->result = $this->user;
 			}
-
-			$this->view->response($result);
 		}
 
 		/**
 		 * get from HTTP form an email and password
-		 * if this pair is valid begin session and set cookie,
-		 * set response true, false otherwise
+		 * if this pair is valid begin session,
+		 * set response idUser and SessionId, false otherwise
 		 */
 		public function putSession()
 		{
 			$user = $this->objFactory->getObjLoginValidator()
 				->setForm($this->params)->isValidForm();
-
-			$result = false;
 
 			if (true === (bool) $user)
 			{
@@ -44,34 +36,18 @@
 				$this->objFactory->getObjUser()
 					->sessionStart($userId, $sessionId);
 
-				$result = true;
+				$this->result = ['idUser' => $userId,
+					'SessionId' => $sessionId];
 			}
-
-			$this->view->response($result);
 		}
 
-		/**
-		 * delete cookie and session
-		 * set response true, false otherwise
-		 */
 		public function deleteSession()
 		{
-			$result = false;
-
 			if(true === (bool) $this->user)
 			{
-				$result = $this->objFactory->getObjUser()
-					->sessionDestroy($this->user[0]['idEmployee']);
-
-				$this->objFactory->getObjCookie()
-					->deleteCookie('id')
-					->deleteCookie('isAdmin')
-					->deleteCookie('session');
+				$this->result = $this->objFactory->getObjUser()
+					->sessionDestroy($this->user[0]['idUser']);
 			}
-
-			$this->objFactory->getObjDataContainer()
-				->setParams(['nextPage' => $this->nextPage,
-					'result' => $result]);
 		}
 
 		public function postUser()

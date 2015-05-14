@@ -1,5 +1,5 @@
 carShop.controller('userController',
-    function ($scope, userService, userFactory, $location) {
+    function ($scope, userService, userFactory, $location, $window) {
         this.template = {
             email: '[0-9a-z_]+@[0-9a-z_]+\\.[a-z]{1,3}',
             password: '.{4,}',
@@ -31,6 +31,8 @@ carShop.controller('userController',
                         self.response = 'Incorrect data';
                     }
                     else {
+                        self.user.save(response);
+
                         $location.path('/');
                     }
                 });
@@ -39,6 +41,8 @@ carShop.controller('userController',
         this.logout = function () {
             userService.logout(function () {
                 $location.path('/');
+
+                $window.location.reload();
             });
         };
 

@@ -1,5 +1,5 @@
-//var BASE_REQUEST_URI = '/REST/task1/Client/api/';
-var BASE_REQUEST_URI = '/~user10/REST/task1/Client/api/';
+var BASE_REQUEST_URI = '/REST/task1/Client/api/';
+//var BASE_REQUEST_URI = '/~user10/REST/task1/Client/api/';
 
 carShop.config(function ($stateProvider, $urlRouterProvider) {
 
@@ -22,6 +22,6 @@ carShop.config(function ($stateProvider, $urlRouterProvider) {
         })
         .state('signin', {
             url: '/signin',
-            templateUrl: 'Client/resources/html/carDetails.html'
+            templateUrl: 'Client/resources/html/signin.html'
         })
 });

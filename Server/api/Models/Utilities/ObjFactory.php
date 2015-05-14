@@ -60,6 +60,11 @@
 			return new \Models\Interfaces\Cookie(COOKIE_EXPIRE);
 		}
 
+		public function getObjHttp()
+		{
+			return \Models\Interfaces\Http::getInstance();
+		}
+
 		public function getObjCar()
 		{
 			return new \Models\Performers\Car();

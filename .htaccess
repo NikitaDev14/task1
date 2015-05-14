@@ -1,0 +1,2 @@
+RewriteEngine on
+DirectoryIndex /REST/task1/Client/resources/html/index.html

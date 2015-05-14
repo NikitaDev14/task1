@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS `rest_cars` (
   `idMark` int(6) unsigned NOT NULL,
   `Model` varchar(50) NOT NULL,
   `Year` year(4) NOT NULL,
-  `EngineVolume` decimal(3,1) unsigned NOT NULL COMMENT 'Liters',
+  `EngineVolume` int(5) unsigned NOT NULL COMMENT 'Qubic santimeters',
   `Color` varchar(8) NOT NULL,
   `TopSpeed` int(3) unsigned NOT NULL COMMENT 'km/h',
   `Price` int(6) unsigned NOT NULL COMMENT '$'
@@ -24,12 +24,12 @@ TRUNCATE TABLE `rest_cars`;
 --
 
 INSERT INTO `rest_cars` (`idCar`, `idMark`, `Model`, `Year`, `EngineVolume`, `Color`, `TopSpeed`, `Price`) VALUES
-(1, 1, 'X5', 2014, '3.2', '#000000', 200, 53000),
-(2, 1, 'X6', 2013, '4.5', '#A3A3A3', 220, 76000),
-(3, 2, 'S600', 2014, '6.0', '#000000', 320, 120000),
-(4, 2, 'GL550', 2014, '5.5', '#000000', 320, 135000),
-(5, 3, 'A8L', 2014, '5.8', '#000000', 320, 98000),
-(6, 3, 'Q7', 2014, '5.0', '#ffffff', 280, 103000);
+(1, 1, 'X5', 2014, 3600, '000000', 200, 53000),
+(2, 1, 'X6', 2013, 4700, 'A3A3A3', 220, 76000),
+(3, 2, 'S600', 2014, 6000, '000000', 320, 120000),
+(4, 2, 'GL550', 2014, 5500, '000000', 320, 135000),
+(5, 3, 'A8L', 2014, 5800, '000000', 320, 98000),
+(6, 3, 'Q7', 2014, 5200, 'ffffff', 280, 103000);
 
 -- --------------------------------------------------------
 
@@ -103,7 +103,7 @@ TRUNCATE TABLE `rest_users`;
 --
 
 INSERT INTO `rest_users` (`idUser`, `Email`, `Name`, `Surname`, `Password`, `SessionId`) VALUES
-(1, 'qwe', 'asd', 'zxc', '*A4B6157319038724E3560894F7F932C8886EBFCF', 'vm0koen357bheg6ihf88vq2qf5');
+(1, 'qwe', 'asd', 'zxc', '*A4B6157319038724E3560894F7F932C8886EBFCF', NULL);
 
 --
 -- Индексы сохранённых таблиц

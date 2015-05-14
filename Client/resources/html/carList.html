@@ -14,12 +14,12 @@
                 <input type="number" class="form-control" id="inputYear" placeholder="Example: 2014" ng-model="year">
             </div>
             <div class="form-group">
-                <label for="inputEngineVolume">Engine volume, L</label>
-                <input type="text" class="form-control" id="inputEngineVolume" placeholder="Example: 1.6" ng-model="engine">
+                <label for="inputEngineVolume">Engine volume, cm<sup>3</sup></label>
+                <input type="text" class="form-control" id="inputEngineVolume" placeholder="Example: 1600" ng-model="engine">
             </div>
             <div class="form-group">
                 <label for="inputColor">Color</label>
-                <input class="form-control" type="text" id="inputColor" placeholder="Example: #0f0f0f" ng-model="fcolor"/>
+                <input class="form-control" type="text" id="inputColor" placeholder="Example: 0f0f0f" ng-model="fcolor"/>
             </div>
             <div class="form-group">
                 <label for="inputTopSpeed">Top speed, km/h</label>
@@ -36,7 +36,7 @@
         <h4>Cars</h4>
         <ol>
             <li ng-repeat="car in carCtrl.carList">
-                <a ng-href="/~user10/REST/task1/#/car/{{car.idCar}}" ng-bind="car.Mark+' '+car.Model"></a>
+                <a ng-href="/REST/task1/#/car/{{car.idCar}}" ng-bind="car.Mark+' '+car.Model"></a>
             </li>
         </ol>
     </div>

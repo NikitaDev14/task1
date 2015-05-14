@@ -14,13 +14,15 @@
 		{
 			parent::__construct();
 
-			$cookie = $this->objFactory->getObjCookie();
+			$http = $this->objFactory->getObjHttp();
 
-			$this->sessionId = $cookie->getCookie('PHPSESSID');
+			$this->idUser = $http->getHeaderValue('user');
+			$this->sessionId = $http->getHeaderValue('session');
 
 			$this->user = $this->objFactory->getObjUser()
 				->getUserBySession
 				(
+					$this->idUser,
 					$this->sessionId
 				);
 		}
