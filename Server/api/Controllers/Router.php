@@ -47,6 +47,14 @@
 				case 'PUT':
 				{
 					parse_str(file_get_contents('php://input'), $this->args);
+
+					break;
+				}
+				case 'POST':
+				{
+					$this->args = $_POST;
+
+					break;
 				}
 			}
 		}
@@ -74,7 +82,7 @@
 				$this->requestString, apache_request_headers());
 
 			echo '</pre>';
-             */	
+			*/
 
 
 			$objController = new $this->controller(

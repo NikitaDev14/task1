@@ -1,9 +1,21 @@
 <div header></div>
 <div class="container" ng-controller="userController as userCtrl">
-     <h4>Cars</h4>
-     <ol>
-        <li ng-repeat="order in userCtrl.orderList">
-            
-        </li>
-     </ol>
+    <h4>My orders</h4>
+
+    <table class="table table-bordered table-hover table-striped">
+        <tr class="info">
+            <th>№</th>
+            <th>Brand</th>
+            <th>Model</th>
+            <th>Pay method</th>
+            <th>Date</th>
+        </tr>
+        <tr ng-repeat="order in userCtrl.orderList">
+            <td ng-bind="$index+1"></td>
+            <td ng-bind="order.Mark"></td>
+            <td ng-bind="order.Car"></td>
+            <td ng-bind="order.PayMethod"></td>
+            <td ng-bind="order.Submitted"></td>
+        </tr>
+    </table>
 </div>

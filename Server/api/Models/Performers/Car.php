@@ -29,6 +29,18 @@
 					':engine' => substr($filter[2], 2),
 					':color' => substr($filter[3], 2),
 					':speed' => substr($filter[4], 2),
-					':price' => substr($filter[5], 2)])->getResult();
+					':price' => substr($filter[5], 2)])
+				->getResult();
+		}
+
+		public function addOrder($idUser, $idCar, $payMethod)
+		{
+			return $this->objFactory->getObjDatabase()
+				->setQuery('CALL rest_addOrder(:idUser, :idCar, :payMethod)')
+				->execute([
+					':idUser' => $idUser,
+					':idCar' => $idCar,
+					':payMethod' => $payMethod])
+				->getResult()[0]['newId'];
 		}
 	}

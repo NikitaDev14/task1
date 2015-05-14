@@ -1,10 +1,10 @@
-carShop.service('userService', function ($http) {
+carShop.service('userService', function ($http, userFactory) {
 
     this.isValidUser = function(callback) {
         $http.get(BASE_REQUEST_URI + 'user/info.json', {
             headers: {
-                session: localStorage.getItem('session') || '',
-                user: localStorage.getItem('user') || ''
+                session: userFactory.get().session || '',
+                user: userFactory.get().id || ''
             }
         })
             .success(callback);
@@ -14,15 +14,30 @@ carShop.service('userService', function ($http) {
         $http.put(BASE_REQUEST_URI + 'user/session.json', {
             email: email,
             password: password
-        }).success(callback);
+        })
+            .success(callback);
     };
 
     this.logout = function(callback) {
         $http.delete(BASE_REQUEST_URI + 'user/session.json', {
             headers: {
-                session: localStorage.getItem('session') || '',
-                user: localStorage.getItem('user') || ''
+                session: userFactory.get().session || '',
+                user: userFactory.get().id || ''
             }
+        })
+            .success(callback);
+    };
+    
+    this.signin = function (name, surname, email, password, callback) {
+        $http.post(BASE_REQUEST_URI + 'user/user.json', {
+            name: name,
+            surname: surname,
+            email: email,
+            password: password },
+            {
+                headers: {
+                    session: userFactory.get().session || '',
+                    user: userFactory.get().id || ''}
         })
             .success(callback);
     };
@@ -30,9 +45,10 @@ carShop.service('userService', function ($http) {
     this.getOrders = function(callback) {
         $http.get(BASE_REQUEST_URI + 'user/orders.json', {
             headers: {
-                session: localStorage.getItem('session') || '',
-                user: localStorage.getItem('user') || ''
+                session: userFactory.get().session || '',
+                user: userFactory.get().id || ''
             }
-        )}
+        })
+            .success(callback);
     };
 });

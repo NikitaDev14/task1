@@ -19,5 +19,14 @@ carShop.factory('userFactory', function () {
         localStorage.removeItem('user');
     };
 
+    this.user.get = function () {
+        return {
+            name: self.name,
+            surname: self.surname,
+            session: localStorage.getItem('session'),
+            id: localStorage.getItem('user')
+        };
+    };
+
     return this.user;
 });

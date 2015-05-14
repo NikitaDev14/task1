@@ -1,5 +1,5 @@
 carShop.controller('userController',
-    function ($scope, userService, userFactory, $location, $window) {
+    function ($scope, userService, userFactory, $state, $location, $window) {
         this.template = {
             email: '[0-9a-z_]+@[0-9a-z_]+\\.[a-z]{1,3}',
             password: '.{4,}',
@@ -9,6 +9,12 @@ carShop.controller('userController',
         var self = this;
 
         this.user = userFactory;
+
+        if('orderList' === $state.current.name) {
+            userService.getOrders(function (response) {
+                self.orderList = response;
+            });
+        }
 
         userService.isValidUser(function (response) {
 

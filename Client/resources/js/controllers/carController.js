@@ -1,5 +1,5 @@
 carShop.controller('carController',
-    function ($scope, carService, $stateParams) {
+    function ($scope, carService, $stateParams, $location) {
 
     var self = this;
 
@@ -13,13 +13,18 @@ carShop.controller('carController',
             self.carList = response;
         });
     }
-    this.addOrder = function (userName, userSurname, payMethod) {
-        requestService.addOrder($stateParams.idCar,
-            userName, userSurname, payMethod, function(response){
-                if(true === Boolean(response)){
-                    $('#myModal').modal('show');
-                }
-            });
+    this.addOrder = function (payMethod) {
+        carService.addOrder($stateParams.idCar, payMethod, function (response) {
+            if(true === Boolean(response)){
+                var notationModal = $('#myModal');
+
+                notationModal.modal('show');
+
+                notationModal.on('hidden', function () {
+                    $location.path('#/');
+                });
+            }
+        });
     };
     this.applyFilter = function (model, year, engine, color, speed, price) {
         carService.getCarListByFilter(

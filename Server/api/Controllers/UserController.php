@@ -14,22 +14,16 @@
 			{
 				$this->result = $this->user;
 			}
+
+			//$this->view->response($this->result);
         }
 
         public function getOrders()
         {
             if(true === (bool) $this->user)
             {
-               //$this->result = $this->objFactory->getObjUser
-                   
-            }
-        }
-
-        public function postOrder()
-        {
-            if(true === (bool) $this->user)
-            {
-
+               $this->result = $this->objFactory->getObjUser()
+	               ->getOrdersByUser($this->user[0]['idUser']);
             }
         }
 

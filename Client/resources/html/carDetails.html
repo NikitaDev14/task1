@@ -10,7 +10,7 @@
         <li>Price: {{carCtrl.car.Price | currency}}</li>
     </ul>
 
-    <button class="btn btn-success" type="button" data-toggle="modal" data-target="#add">Order</button>
+    <button ng-controller="userController as userCtrl" class="btn btn-success" type="button" data-toggle="modal" data-target="#add" ng-class="{'disabled' : !userCtrl.isValidUser}">Order</button>
 
     <!-- Order modal -->
 
@@ -22,30 +22,14 @@
                     <h4 class="modal-title" id="addModalLabel">Order form</h4>
                 </div>
                 <div class="modal-body">
-                    <form class="form-horizontal" name="orderForm" >
-                        <div class="form-group has-feedback" ng-class="(orderForm.name.$valid)? 'has-success' : 'has-error'">
-                            <label for="inputNewName" class="col-sm-2 control-label">Your name</label>
-                            <div class="col-sm-10">
-                                <input type="text" name="name" class="form-control" id="inputNewName" placeholder="Name" aria-describedby="nameStatus" ng-model="userName" ng-pattern="ctrl.userNameSurnameTempl" ng-trim="true" required>
-                                <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true" ng-show="orderForm.name.$valid"></span>
-                                <span id="nameStatus" class="sr-only" ng-show="orderForm.name.$valid">(success)</span>
-                                <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" ng-show="orderForm.name.$invalid"></span>
-                                <span id="nameStatus" class="sr-only" ng-show="orderForm.name.$invalid">(error)</span>
-                                <span class="error" ng-show="orderForm.name.$invalid">Only letters of the Latin alphabet, spaces and dashes are allowed, at least three symbols.</span>
-                            </div>
-                        </div>
-                        <div class="form-group has-feedback" ng-class="(orderForm.surname.$valid)? 'has-success' : 'has-error'">
-                            <label for="inputNewSurname" class="col-sm-2 control-label">Surname</label>
-                            <div class="col-sm-10">
-                                <input type="text" name="surname" class="form-control" id="inputNewSurname" placeholder="Surname" aria-describedby="surnameStatus" ng-model="userSurname" ng-pattern="ctrl.userNameSurnameTempl" ng-trim="true" required>
-                                <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true" ng-show="orderForm.surname.$valid"></span>
-                                <span id="surnameStatus" class="sr-only" ng-show="orderForm.surname.$valid">(success)</span>
-                                <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" ng-show="orderForm.surname.$invalid"></span>
-                                <span id="surnameStatus" class="sr-only" ng-show="orderForm.surname.$invalid">(error)</span>
-                                <span class="error" ng-show="orderForm.surname.$invalid">Only letters of the Latin alphabet, spaces and dashes are allowed, at least three symbols.</span>
-                            </div>
-                        </div>
+                    <form class="form-horizontal" name="orderForm">
                         <label>Pay method</label>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="payMethod" ng-model="payMethod" value="bank transfer">
+                                Bank transfer
+                            </label>
+                        </div>
                         <div class="radio">
                             <label>
                                 <input type="radio" name="payMethod" ng-model="payMethod" value="credit cart" checked>
@@ -61,7 +45,7 @@
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-dismiss="modal" ng-click="ctrl.addOrder(userName, userSurname, payMethod)" ng-class="{'disabled': orderForm.$invalid || undefined === payMethod}">Submit order</button>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-dismiss="modal" ng-click="carCtrl.addOrder(payMethod)" ng-class="{'disabled': undefined === payMethod}">Submit order</button>
                             </div>
                         </div>
                     </form>
