@@ -17,7 +17,7 @@ carShop.service('userService', function ($http) {
         }).success(callback);
     };
 
-    this.logout = function (callback) {
+    this.logout = function(callback) {
         $http.delete(BASE_REQUEST_URI + 'user/session.json', {
             headers: {
                 session: localStorage.getItem('session') || '',
@@ -25,5 +25,14 @@ carShop.service('userService', function ($http) {
             }
         })
             .success(callback);
+    };
+
+    this.getOrders = function(callback) {
+        $http.get(BASE_REQUEST_URI + 'user/orders.json', {
+            headers: {
+                session: localStorage.getItem('session') || '',
+                user: localStorage.getItem('user') || ''
+            }
+        )}
     };
 });

@@ -14,7 +14,24 @@
 			{
 				$this->result = $this->user;
 			}
-		}
+        }
+
+        public function getOrders()
+        {
+            if(true === (bool) $this->user)
+            {
+               //$this->result = $this->objFactory->getObjUser
+                   
+            }
+        }
+
+        public function postOrder()
+        {
+            if(true === (bool) $this->user)
+            {
+
+            }
+        }
 
 		/**
 		 * get from HTTP form an email and password

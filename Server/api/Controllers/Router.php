@@ -74,7 +74,7 @@
 				$this->requestString, apache_request_headers());
 
 			echo '</pre>';
-			*/
+             */	
 
 
 			$objController = new $this->controller(
@@ -82,6 +82,6 @@
 
 			$action = $this->action;
 
-			$objController->$action();
+            $objController->$action();
 		}
 	}

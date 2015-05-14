@@ -18,18 +18,6 @@
 				->execute([':idCar' => $idCar])->getResult()[0];
 		}
 
-		public function addOrder($params)
-		{
-			return (bool) $this->objFactory->getObjDatabase()
-				->setQuery('CALL addOrder(:idCar, :userName,
-						:userSurname, :payMethod)')
-				->execute([
-					':idCar' => $params[0],
-					':userName' => $params[1],
-					':userSurname' => $params[2],
-					':payMethod' => $params[3]])->getResult()[0]['result'];
-		}
-
 		public function getCarListByFilter($filter)
 		{
 			return $this->objFactory->getObjDatabase()
