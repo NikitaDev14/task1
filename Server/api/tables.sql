@@ -68,15 +68,33 @@ CREATE TABLE IF NOT EXISTS `rest_orders` (
   `idOrder` int(6) unsigned NOT NULL,
   `idUser` int(6) unsigned DEFAULT NULL,
   `idCar` int(6) unsigned NOT NULL,
-  `PayMethod` enum('credit cart','cash') NOT NULL,
+  `PayMethod` enum('credit cart','cash','bank transfer') NOT NULL,
   `Submitted` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 --
 -- Очистить таблицу перед добавлением данных `rest_orders`
 --
 
 TRUNCATE TABLE `rest_orders`;
+--
+-- Дамп данных таблицы `rest_orders`
+--
+
+INSERT INTO `rest_orders` (`idOrder`, `idUser`, `idCar`, `PayMethod`, `Submitted`) VALUES
+(1, 1, 2, 'cash', '2015-05-14 16:56:48'),
+(2, 1, 3, 'credit cart', '2015-05-14 17:37:31'),
+(3, 1, 3, 'bank transfer', '2015-05-14 19:02:23'),
+(4, 1, 2, 'cash', '2015-05-14 20:06:46'),
+(5, 1, 4, 'bank transfer', '2015-05-14 20:11:00'),
+(6, 1, 4, 'cash', '2015-05-14 20:14:47'),
+(7, 1, 4, 'cash', '2015-05-14 20:15:33'),
+(8, 1, 4, 'credit cart', '2015-05-14 20:17:14'),
+(9, 1, 4, 'credit cart', '2015-05-14 20:17:53'),
+(10, 1, 4, 'credit cart', '2015-05-14 20:18:04'),
+(11, 1, 4, 'cash', '2015-05-14 20:20:41'),
+(12, 2, 3, 'cash', '2015-05-15 07:16:43');
+
 -- --------------------------------------------------------
 
 --
@@ -91,7 +109,7 @@ CREATE TABLE IF NOT EXISTS `rest_users` (
   `Surname` varchar(50) NOT NULL,
   `Password` varchar(50) NOT NULL,
   `SessionId` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- Очистить таблицу перед добавлением данных `rest_users`
@@ -103,7 +121,8 @@ TRUNCATE TABLE `rest_users`;
 --
 
 INSERT INTO `rest_users` (`idUser`, `Email`, `Name`, `Surname`, `Password`, `SessionId`) VALUES
-(1, 'qwe', 'asd', 'zxc', '*A4B6157319038724E3560894F7F932C8886EBFCF', NULL);
+(1, 'qwe', 'asd', 'zxc', '*A4B6157319038724E3560894F7F932C8886EBFCF', NULL),
+(2, 'asd@w.a', 'asd', 'zxc', '*A4B6157319038724E3560894F7F932C8886EBFCF', NULL);
 
 --
 -- Индексы сохранённых таблиц
@@ -156,12 +175,12 @@ ALTER TABLE `rest_marks`
 -- AUTO_INCREMENT для таблицы `rest_orders`
 --
 ALTER TABLE `rest_orders`
-  MODIFY `idOrder` int(6) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `idOrder` int(6) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT для таблицы `rest_users`
 --
 ALTER TABLE `rest_users`
-  MODIFY `idUser` int(6) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `idUser` int(6) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- Ограничения внешнего ключа сохраненных таблиц
 --
