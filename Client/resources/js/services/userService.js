@@ -28,12 +28,13 @@ carShop.service('userService', function ($http, userFactory) {
             .success(callback);
     };
     
-    this.signin = function (name, surname, email, password, callback) {
+    this.signup = function (name, surname, email, password, passwordRepeat, callback) {
         $http.post(BASE_REQUEST_URI + 'user/user.json', {
             name: name,
             surname: surname,
             email: email,
-            password: password },
+            password: password,
+            passwordRepeat: passwordRepeat },
             {
                 headers: {
                     session: userFactory.get().session || '',

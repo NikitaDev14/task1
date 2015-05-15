@@ -8,14 +8,15 @@
 		 * add new name, surname, email, password
 		 * @return (newId)
 		 */
-		public function addUser($email, $name, $surname, $password)
+		public function addUser($name, $surname, $email, $password)
 		{
 			return $this->objFactory->getObjDatabase()
-				->setQuery('CALL rest_addUser(:email, :name, :surname, :password)')
+				->setQuery('CALL rest_addUser(:name, :surname,
+												:email, :password)')
 				->execute([
-					':email' => $email,
 					':name' => $name,
 					':surname' => $surname,
+					':email' => $email,
 					':password' => $password])
 				->getResult()[0]['newId'];
         }
@@ -34,7 +35,7 @@
 		public function getUserByEmail($email)
 		{
 			return (bool) $this->objFactory->getObjDatabase()
-				->setQuery('CALL rest_getEmplByEml(:email)')
+				->setQuery('CALL rest_getUserByEmail(:email)')
 				->execute([':email' => $email])->getResult();
 		}
 

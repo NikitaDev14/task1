@@ -1,0 +1,65 @@
+<div header></div>
+<div class="container" ng-controller="userController as userCtrl">
+    <form class="form-horizontal" name="addForm" ng-submit="userCtrl.signup(newUserName, newUserSurname, newUserEmail, newUserPassword, newUserPasswordRepeat)">
+        <div class="form-group has-feedback" ng-class="(addForm.name.$valid)? 'has-success' : 'has-error'">
+            <label for="inputNewName" class="col-sm-2 control-label">Name</label>
+            <div class="col-sm-10">
+                <input type="text" name="name" class="form-control" id="inputNewName" aria-describedby="nameStatus" ng-model="newUserName" ng-pattern="userCtrl.template.name" ng-trim="true" required>
+                <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true" ng-show="addForm.name.$valid"></span>
+                <span id="nameStatus" class="sr-only" ng-show="addForm.name.$valid">(success)</span>
+                <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" ng-show="addForm.name.$invalid"></span>
+                <span id="nameStatus" class="sr-only" ng-show="addForm.name.$invalid">(error)</span>
+                <span class="error" ng-show="addForm.name.$invalid">Only letters of the Latin alphabet, spaces and dashes are allowed, at least three symbols.</span>
+            </div>
+        </div>
+        <div class="form-group has-feedback" ng-class="(addForm.surname.$valid)? 'has-success' : 'has-error'">
+            <label for="inputNewsurname" class="col-sm-2 control-label">Surname</label>
+            <div class="col-sm-10">
+                <input type="text" name="surname" class="form-control" id="inputNewsurname" aria-describedby="surnameStatus" ng-model="newUserSurname" ng-pattern="userCtrl.template.name" ng-trim="true" required>
+                <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true" ng-show="addForm.surname.$valid"></span>
+                <span id="surnameStatus" class="sr-only" ng-show="addForm.surname.$valid">(success)</span>
+                <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" ng-show="addForm.surname.$invalid"></span>
+                <span id="surnameStatus" class="sr-only" ng-show="addForm.surname.$invalid">(error)</span>
+                <span class="error" ng-show="addForm.surname.$invalid">Only letters of the Latin alphabet, spaces and dashes are allowed, at least three symbols.</span>
+            </div>
+        </div>
+        <div class="form-group has-feedback" ng-class="(addForm.email.$valid)? 'has-success' : 'has-error'">
+            <label for="inputNewEmail" class="col-sm-2 control-label">Email</label>
+            <div class="col-sm-10">
+                <input type="text" name="email" class="form-control" id="inputNewEmail" aria-describedby="emailStatus" ng-model="newUserEmail" ng-pattern="userCtrl.template.email" ng-trim="true" required>
+                <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true" ng-show="addForm.email.$valid"></span>
+                <span id="emailStatus" class="sr-only" ng-show="addForm.email.$valid">(success)</span>
+                <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" ng-show="addForm.email.$invalid"></span>
+                <span id="emailStatus" class="sr-only" ng-show="addForm.email.$invalid">(error)</span>
+                <span class="error" ng-show="addForm.email.$invalid">Invalid email.</span>
+            </div>
+        </div>
+        <div class="form-group has-feedback" ng-class="(addForm.password.$valid)? 'has-success' : 'has-error'">
+            <label for="inputNewPassword" class="col-sm-2 control-label">Password</label>
+            <div class="col-sm-10">
+                <input type="password" name="password" class="form-control" id="inputNewPassword" aria-describedby="passwordStatus" ng-model="newUserPassword" ng-pattern="userCtrl.template.password" ng-trim="true" required>
+                <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true" ng-show="addForm.password.$valid"></span>
+                <span id="passwordStatus" class="sr-only" ng-show="addForm.password.$valid">(success)</span>
+                <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" ng-show="addForm.password.$invalid"></span>
+                <span id="passwordStatus" class="sr-only" ng-show="addForm.password.$invalid">(error)</span>
+                <span class="error" ng-show="addForm.password.$invalid">At least 4 symbols.</span>
+            </div>
+        </div>
+        <div class="form-group has-feedback" ng-class="(addForm.passwordRepeat.$valid)? 'has-success' : 'has-error'">
+            <label for="inputNewPasswordRepeat" class="col-sm-2 control-label">Repeat password</label>
+            <div class="col-sm-10">
+                <input type="password" name="passwordRepeat" class="form-control" id="inputNewPasswordRepeat" aria-describedby="passwordRepeatStatus" ng-model="newUserPasswordRepeat" ng-pattern="newUserPassword" ng-trim="true" required>
+                <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true" ng-show="addForm.passwordRepeat.$valid"></span>
+                <span id="passwordRepeatStatus" class="sr-only" ng-show="addForm.passwordRepeat.$valid">(success)</span>
+                <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" ng-show="addForm.passwordRepeat.$invalid"></span>
+                <span id="passwordRepeatStatus" class="sr-only" ng-show="addForm.passwordRepeat.$invalid">(error)</span>
+                <span class="error" ng-show="addForm.passwordRepeat.$invalid">Passwords are not identical.</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-primary" ng-class="{'disabled': addForm.$invalid}">Create an account</button>
+            </div>
+        </div>
+    </form>
+</div>

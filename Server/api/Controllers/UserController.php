@@ -63,28 +63,19 @@
 
 		public function postUser()
 		{
-			$formData = $this->objFactory->getObjHttp()
-				->setParams($this->form)->getParams();
+			$form = $this->objFactory->getObjSignupValidator()
+				->setForm($this->params)->isValidForm();
 
-			$form = $this->objFactory->getObjValidatorSignup()
-				->setForm($formData)->isValidForm();
-
-			$result = false;
-
-			if(true === (bool) $this->admin && true === $form)
+			if(true === $form && false === (bool) $this->user)
 			{
-				$result = $this->objFactory->getObjUser()
+				$this->result = $this->objFactory->getObjUser()
 					->addUser
 					(
-						$formData['name'],
-						$formData['email'],
-						$formData['password'],
-						(bool) $formData['isAdmin']
+						$this->params['name'],
+						$this->params['surname'],
+						$this->params['email'],
+						$this->params['password']
 					);
 			}
-
-			$this->objFactory->getObjDataContainer()
-				->setParams(['nextPage' => $this->nextPage,
-					'result' => $result]);
 		}
 	}

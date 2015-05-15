@@ -40,7 +40,7 @@
 			if(!empty($this->form['email']))
 			{
 				$userExsists = $this->objFactory->getObjUser()
-					->getUserByEml($this->form['email']);
+					->getUserByEmail($this->form['email']);
 
 				$result = preg_match(EMAIL_TEMPLATE, $this->form['email']) &&
 					!$userExsists;
@@ -55,9 +55,10 @@
 
 		public function isValidName()
 		{
-			if(!empty($this->form['name']))
+			if(!empty($this->form['name']) && !empty($this->form['surname']))
 			{
-				$result = (bool)preg_match(NAME_TEMPLATE, $this->form['name']);
+				$result = (bool) preg_match(NAME_TEMPLATE, $this->form['name'])
+					&& (bool) preg_match(NAME_TEMPLATE, $this->form['surname']);
 			}
 			else
 			{
@@ -71,7 +72,7 @@
 		{
 			if(!empty($this->form['password']))
 			{
-				$result = (bool)preg_match(PASSWORD_TEMPLATE,
+				$result = (bool) preg_match(PASSWORD_TEMPLATE,
 					$this->form['password']);
 			}
 			else

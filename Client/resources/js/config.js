@@ -20,9 +20,9 @@ carShop.config(function ($stateProvider, $urlRouterProvider) {
             url: '/login',
             templateUrl: 'Client/resources/html/login.html'
         })
-        .state('signin', {
-            url: '/signin',
-            templateUrl: 'Client/resources/html/signin.html'
+        .state('signup', {
+            url: '/signup',
+            templateUrl: 'Client/resources/html/signup.html'
         })
         .state('orderList', {
             url: '/orderList',

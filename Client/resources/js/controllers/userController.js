@@ -52,9 +52,9 @@ carShop.controller('userController',
             });
         };
 
-        this.signin = function (name, email, password, passwordRepeat) {
+        this.signup = function (name, surname, email, password, passwordRepeat) {
 
-            userService.signup(name, email,
+            userService.signup(name, surname, email,
                 password, passwordRepeat, function (response) {
 
                     var mess = '';
@@ -62,7 +62,7 @@ carShop.controller('userController',
                     if(true === Boolean(response)) {
                         mess = 'Successful registration';
 
-                        $location.path('/login');
+                        $location.path('/');
                     }
                     else {
                         mess = 'Failure registration';
