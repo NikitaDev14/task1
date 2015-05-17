@@ -4,31 +4,46 @@
 
 	class HtmlView extends BaseView
 	{
-		public function response($responseContent)
+		public function __construct()
 		{
 			header(HEADER_HTML);
+		}
+		private function htmlEncode($data)
+		{
+			$response = '<table border=1>';
 
-            $response = '<table border=1>';
+			foreach($data as $item)
+			{
+				$response .= '<tr>';
 
-            foreach($responseContent as $car)
-            {
-                $response .= '<tr>';
+				if(is_array($item))
+				{
+					foreach($item as $value)
+					{
+						$response .= '<td>' . $value . '</td>';
+					}
+				}
+				else
+				{
+					$response .= '<td>' . $item . '</td>';
+				}
 
-                foreach($car as $value)
-                {
-                    $response .= '<td>' . $value . '</td>';
-                }
 
-                $response .= '</tr>';
-            }
+				$response .= '</tr>';
+			}
 
-            $response .= '</table>';
-
-            echo $response;
+			return $response . '</table>';
+		}
+		public function response($responseContent)
+		{
+            echo $this->htmlEncode($responseContent);
 		}
 
-		public function responseError()
+		public function responseError(
+			\Models\Utilities\RestException $exception)
 		{
+			parent::sendErrorHeader($exception);
 
+			echo '<p>' . $exception . '</p>';
 		}
 	}

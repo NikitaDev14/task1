@@ -17,7 +17,7 @@ CREATE PROCEDURE `rest_addOrder`(IN `idUser` INT(6) UNSIGNED, IN `idCar` INT(6) 
 BEGIN
 	INSERT INTO rest_orders (rest_orders.idUser, rest_orders.idCar, rest_orders.PayMethod)
     VALUES (idUser, idCar, PayMethod);
-    
+
     SELECT LAST_INSERT_ID() AS newId;
 END$$
 
@@ -27,7 +27,7 @@ CREATE PROCEDURE `rest_addUser`(IN `Name` VARCHAR(50) CHARSET utf8, IN `Surname`
 BEGIN
 	INSERT INTO rest_users (rest_users.Name, rest_users.Surname, rest_users.Email, rest_users.Password)
     VALUES (Name, Surname, Email, PASSWORD(Passw));
-    
+
     SELECT LAST_INSERT_ID() AS newId;
 END$$
 
@@ -96,7 +96,7 @@ CREATE PROCEDURE `rest_getUserByEmailPassw`(IN `Email` VARCHAR(255) CHARSET utf8
 BEGIN
 	SELECT users.idUser
     FROM rest_users AS users
-    WHERE users.Email = Email AND 
+    WHERE users.Email = Email AND
     	users.Password = PASSWORD(Passw);
 END$$
 
@@ -106,7 +106,7 @@ CREATE PROCEDURE `rest_getUserBySession`(IN `idUser` INT(6) UNSIGNED, IN `Sessio
 BEGIN
 	SELECT users.idUser, users.Name, users.Surname, users.SessionId
     FROM rest_users AS users
-    WHERE users.idUser = idUser 
+    WHERE users.idUser = idUser
     	AND users.SessionId = SessionId;
 END$$
 
@@ -117,7 +117,7 @@ BEGIN
 	UPDATE rest_users
     SET rest_users.SessionId = NULL
     WHERE rest_users.idUser = idUser;
-    
+
     SELECT ROW_COUNT() AS result;
 END$$
 
@@ -125,10 +125,10 @@ DROP PROCEDURE IF EXISTS `rest_sessionStart`$$
 CREATE PROCEDURE `rest_sessionStart`(IN `idUser` INT(6) UNSIGNED, IN `SessionId` VARCHAR(50) CHARSET utf8)
     MODIFIES SQL DATA
 BEGIN
-	UPDATE rest_users 
+	UPDATE rest_users
     SET rest_users.SessionId = SessionId
     WHERE rest_users.idUser = idUser;
-    
+
     SELECT ROW_COUNT() as result;
 END$$
 

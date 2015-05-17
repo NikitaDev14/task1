@@ -4,14 +4,19 @@
 
 	class TxtView extends BaseView
 	{
-		public function response($responseContent)
+		public function __construct()
 		{
 			header(HEADER_TXT);
-
+		}
+		public function response($responseContent)
+		{
 			print_r($responseContent);
 		}
-		public function responseError()
+		public function responseError(
+			\Models\Utilities\RestException $exception)
 		{
+			parent::sendErrorHeader($exception);
 
+			echo $exception;
 		}
 	}

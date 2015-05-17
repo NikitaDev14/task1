@@ -14,7 +14,8 @@
 		{
 			parent::__construct();
 
-			$this->result = false;
+			$this->result =
+				new \Models\Utilities\RestException('Forbidden', 403);
 
 			$this->params = $params;
 			$this->responseFormat = $responseFormat;
@@ -29,6 +30,13 @@
 
 		public function __destruct()
 		{
-			$this->view->response($this->result);
+			if($this->result instanceof \Models\Utilities\RestException)
+			{
+				$this->view->responseError($this->result);
+			}
+			else
+			{
+				$this->view->response($this->result);
+			}
 		}
 	}

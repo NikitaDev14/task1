@@ -9,6 +9,8 @@
 		public function __construct()
 		{
 			$this->writer = new \XMLWriter();
+
+			header(HEADER_XML);
 		}
 
 		private function getXML($data)
@@ -49,12 +51,14 @@
 		}
         public function response($responseContent)
         {
-            header(HEADER_XML);
-
 	        echo $this->xmlEncode($responseContent);
         }
-        public function responseError()
+        public function responseError(
+	        \Models\Utilities\RestException $exception)
 		{
+			parent::sendErrorHeader($exception);
 
+			echo '<?xml version=\'1.0\'?><response>'
+				. $exception . '</response>';
 		}
 	}

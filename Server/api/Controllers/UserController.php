@@ -14,8 +14,6 @@
 			{
 				$this->result = $this->user;
 			}
-
-			//$this->view->response($this->result);
         }
 
         public function getOrders()
